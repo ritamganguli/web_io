@@ -1,0 +1,25 @@
+name: Wdio test
+
+on:
+   workflow_dispatch
+
+jobs:
+  test-tunnel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Node Dependency
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - run: |
+          npm install selenium-webdriver
+          npm install wdio
+          npm install
+
+      - name: Run Test Case
+        run: |
+          npm run single
